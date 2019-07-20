@@ -1,0 +1,15 @@
+{
+  "name": "express_shop_courses",
+  "version": "1.0.0",
+  "description": "Online shop for buy courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js"
+  ],
+  "author": "Aleksey Belchenkov",
+  "license": "ISC"
+}
