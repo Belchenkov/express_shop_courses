@@ -1,0 +1,26 @@
+body {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.nav-wrapper {
+    padding: 0 2rem;
+}
+
+.brand-logo {
+    display: flex!important;
+    align-items: center;
+}
+
+.brand-logo div {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+nav ul a {
+    display: flex;
+}
