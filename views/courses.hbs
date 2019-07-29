@@ -6,14 +6,19 @@
                 <div class="col s4">
                     <div class="card">
                         <div class="card-image">
-                            <img src={{img}} style="height: 230px" alt={{title}}>
+                            <img src={{img}} style="height: 250px" alt={{title}}>
                         </div>
                         <div class="card-content">
                             <div class="card-title">{{title}}</div>
                             <p class="price">{{price}}</p>
                         </div>
                         <div class="card-action">
-                            <a href="/courses/{{id}}">Подробнее</a>
+                            <a
+                                href="/courses/{{id}}"
+                                class="waves-effect waves-light btn-small">
+                                <i class="material-icons left">info_outline</i>
+                                Подробнее
+                            </a>
                         </div>
                     </div>
                 </div>

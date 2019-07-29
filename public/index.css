@@ -44,3 +44,11 @@ a.brand-logo {
 nav ul a {
     display: flex;
 }
+
+.price {
+    font-size: 2rem;
+    background: #588aeb;
+    color: #fff;
+    padding-left: 1.3rem;
+    border-radius: 5px;
+}
