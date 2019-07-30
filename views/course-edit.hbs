@@ -1,0 +1,54 @@
+<h1>Редактировать {{course.title}}</h1>
+
+<form action="/courses/edit" method="post">
+    <div class="row d-flex">
+        <div class="input-field pull-s6 col s6">
+            <i class="material-icons prefix">title</i>
+            <input
+                    id="title"
+                    type="text"
+                    class="validate"
+                    required
+                    name="title"
+                    value="{{course.title}}"
+            >
+            <label for="title">Название курса</label>
+            <span class="helper-text" data-error="Введите название"></span>
+        </div>
+        <div class="input-field pull-s6 col s6">
+            <i class="material-icons prefix">attach_money</i>
+            <input
+                    id="price"
+                    type="number"
+                    class="validate"
+                    required
+                    min="1"
+                    name="price"
+                    value="{{course.price}}"
+            >
+            <label for="price">Цена</label>
+            <span class="helper-text" data-error="Введите цену"></span>
+        </div>
+        <div class="input-field pull-s6 col s6">
+            <i class="material-icons prefix">image</i>
+            <input
+                    id="img"
+                    type="text"
+                    class="validate"
+                    required
+                    name="img"
+                    value="{{course.img}}"
+            >
+            <label for="img">URL картинки</label>
+            <span class="helper-text" data-error="Введите URL картинки"></span>
+        </div>
+        <input type="hidden" name="id" value="{{course.id}}">
+        <div class="pull-s6 col s6 mt-1">
+            <button class="btn light-green lighten-1 waves-light">
+                Сохранить
+                <i class="material-icons left">save</i>
+            </button>
+        </div>
+    </div>
+</form>
+

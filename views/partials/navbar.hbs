@@ -36,6 +36,16 @@
                     <i class="material-icons mr-1">add</i> Добавить курс
                 </a></li>
             {{/if}}
+
+            {{#if isCard }}
+                <li class="active"><a href="/card">
+                    <i class="material-icons mr-1">shopping_cart</i> Корзина
+                </a></li>
+            {{else}}
+                <li><a href="/card">
+                    <i class="material-icons mr-1">shopping_cart</i> Корзина
+                </a></li>
+            {{/if}}
         </ul>
     </div>
 </nav>

@@ -1,2 +1,43 @@
 <h1>Курсы</h1>
 
+{{#if courses.length}}
+        <div class="row">
+            {{#each courses}}
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src={{img}} style="height: 250px" alt={{title}}>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">{{title}}</div>
+                            <p class="price price-color">{{price}}</p>
+                        </div>
+                        <div class="card-action">
+                            <a
+                                href="/courses/{{id}}"
+                                target="_blank"
+                                class="mt-1 waves-effect waves-light btn-small">
+                                <i class="material-icons left">info_outline</i>
+                                Подробнее
+                            </a>
+                            <a
+                                href="/courses/{{id}}/edit?allow=true"
+                                class="mt-1 waves-effect waves-light btn-small blue-grey darken-1">
+                                <i class="material-icons left">edit</i>
+                                Редактировать
+                            </a>
+                            <form class="mt-1" action="/card/add" method="post">
+                                <input type="hidden" name="id" value="{{id}}" />
+                                <button type="submit" class="btn light-blue accent-4">
+                                    <i class="material-icons left">add_shopping_cart</i>
+                                    Купить
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+{{else}}
+    <p>Курсов пока нет</p>
+{{/if}}
