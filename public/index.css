@@ -48,6 +48,9 @@ nav ul a {
 
 .price {
     font-size: 2rem;
+}
+
+.price-color {
     background: #588aeb;
     color: #fff;
     padding-left: 1.3rem;
