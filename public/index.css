@@ -15,6 +15,7 @@ body {
 .d-flex {
     display: flex!important;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 a.brand-logo {
