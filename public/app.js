@@ -11,7 +11,7 @@ document.querySelectorAll('.price').forEach(node => {
 
 const $card = document.querySelector('#card');
 
-if (card) {
+if ($card) {
     $card.addEventListener('click', e => {
        if (e.target.classList.contains('js-remove')) {
            const id = e.target.dataset.id;

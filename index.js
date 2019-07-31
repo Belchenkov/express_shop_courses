@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
 const exphbs  = require('express-handlebars');
 
 const app = express();
@@ -32,6 +33,20 @@ app.use('/card', cardRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+async function start() {
+    try {
+        const mongoURL = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
+
+        await mongoose.connect(mongoURL, {useNewUrlParser: true});
+
+        app.listen(PORT, () => {
+            console.log(`Server running on http://localhost:${PORT}`);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+start();
+
+
