@@ -37,7 +37,10 @@ async function start() {
     try {
         const mongoURL = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
 
-        await mongoose.connect(mongoURL, {useNewUrlParser: true});
+        await mongoose.connect(mongoURL, {
+            useNewUrlParser: true,
+            useFindAndModify: false
+        });
 
         app.listen(PORT, () => {
             console.log(`Server running on http://localhost:${PORT}`);
