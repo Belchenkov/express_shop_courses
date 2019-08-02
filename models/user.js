@@ -23,8 +23,7 @@ const userSchema = new Schema({
                     required: true
                 }
             }
-        ],
-        required: true
+        ]
     },
 
 });

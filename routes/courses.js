@@ -14,7 +14,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const course = await Course.findById(req.params.id);
+    const course = await Course.findById(req.params.id)
+        .populate('userId', 'email name')
+        .select('price title img');
 
     res.render('course', {
         layout: 'empty',

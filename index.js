@@ -3,6 +3,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const exphbs  = require('express-handlebars');
 
+// Models
+const User = require('./models/user');
+
 const app = express();
 
 // Routes
@@ -21,6 +24,16 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', 'views');
+
+app.use(async (req, res, next) => {
+    try {
+        const user = await User.findById('5d43b4f304c64e06a8ff6fc1');
+        req.user = user;
+        next();
+    } catch (e) {
+        console.log(e);
+    }
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
@@ -41,6 +54,18 @@ async function start() {
             useNewUrlParser: true,
             useFindAndModify: false
         });
+
+        const candidate = await User.findOne();
+
+        if (!candidate) {
+            const user = new User({
+                email: 'u608110@gmail.com',
+                name: 'Belchenkov',
+                cart: {items: []}
+            });
+
+            await user.save();
+        }
 
         app.listen(PORT, () => {
             console.log(`Server running on http://localhost:${PORT}`);
