@@ -3,15 +3,31 @@ const router = Router();
 
 const Course = require('../models/course');
 
+function mapCart(cart) {
+    return cart.items.map(c => ({
+      ...c.courseId._doc, count: c.count
+    }));
+}
+
+function computePrice(courses) {
+    return courses.reduce((total, course) => {
+        return total += course.price * course.count;
+    }, 0);
+}
+
 router.get('/', async (req, res) => {
-    const card = await Course.find({});
-    res.json(200, {message: 'Success'});
-    /*res.render('card', {
+    const user = await req.user
+        .populate('cart.items.courseId')
+        .execPopulate();
+
+    const courses = mapCart(user.cart);
+
+    res.render('card', {
        title: 'Корзина',
        isCard: true,
-       courses: card.items,
-       price: card.price
-    });*/
+       courses,
+       price: computePrice(courses)
+    });
 });
 
 router.post('/add', async (req, res) => {
