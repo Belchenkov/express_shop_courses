@@ -8,6 +8,10 @@ body {
     margin-right: 1rem;
 }
 
+.mr-5 {
+    margin-right: 5rem;
+}
+
 .mt-1 {
     margin-top: 1rem;
 }
@@ -16,6 +20,12 @@ body {
     display: flex!important;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.d-flex-row {
+    display: flex!important;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 a.brand-logo {

@@ -43,12 +43,32 @@
             <span class="helper-text" data-error="Введите URL картинки"></span>
         </div>
         <input type="hidden" name="id" value="{{course.id}}">
-        <div class="pull-s6 col s6 mt-1">
-            <button class="btn light-green lighten-1 waves-light">
+        <div>
+            <button
+                    type="submit"
+                    class="btn light-green lighten-1 waves-light"
+            >
                 Сохранить
                 <i class="material-icons left">save</i>
             </button>
         </div>
     </div>
 </form>
+
+<div class="input-field pull-s6 col s6">
+    <form action="/courses/remove" method="post">
+        <input
+                type="hidden"
+                name="id"
+                value="{{ course.id }}"
+        >
+        <button
+                type="submit"
+                class="btn red lighten-1 waves-light"
+        >
+            Удалить
+            <i class="material-icons left">delete_forever</i>
+        </button>
+    </form>
+</div>
 
