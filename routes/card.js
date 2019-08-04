@@ -5,7 +5,9 @@ const Course = require('../models/course');
 
 function mapCart(cart) {
     return cart.items.map(c => ({
-      ...c.courseId._doc, count: c.count
+      ...c.courseId._doc,
+        count: c.count,
+        id: c.courseId.id
     }));
 }
 
