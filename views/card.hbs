@@ -27,6 +27,13 @@
         </table>
 
         <p><strong>Всего на сумму:</strong> <span class="price">{{price}}</span></p>
+
+        <form action="/orders" method="post">
+            <button type="submit" class="btn green lighten-2">
+                <i class="material-icons left">monetization_on</i>
+                Сделать заказ
+            </button>
+        </form>
     {{else}}
         <p>Корзина пуста</p>
     {{/if}}

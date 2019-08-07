@@ -13,6 +13,7 @@ const homeRoutes = require('./routes/home');
 const addRoutes = require('./routes/add');
 const coursesRoutes = require('./routes/courses');
 const cardRoutes = require('./routes/card');
+const ordersRoutes = require('./routes/orders');
 
 // Handlebars
 const hbs = exphbs.create({
@@ -43,6 +44,7 @@ app.use('/', homeRoutes);
 app.use('/add', addRoutes);
 app.use('/courses', coursesRoutes);
 app.use('/card', cardRoutes);
+app.use('/orders', ordersRoutes);
 
 const PORT = process.env.PORT || 3000;
 

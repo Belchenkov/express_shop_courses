@@ -46,6 +46,16 @@
                     <i class="material-icons mr-1">shopping_cart</i> Корзина
                 </a></li>
             {{/if}}
+
+            {{#if isOrder }}
+                <li class="active"><a href="/orders">
+                    <i class="material-icons mr-1">monetization_on</i> Заказы
+                </a></li>
+            {{else}}
+                <li><a href="/orders">
+                    <i class="material-icons mr-1">monetization_on</i> Заказы
+                </a></li>
+            {{/if}}
         </ul>
     </div>
 </nav>
