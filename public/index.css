@@ -8,6 +8,10 @@ body {
     margin-right: 1rem;
 }
 
+.ml-1 {
+    margin-left: 1rem;
+}
+
 .mr-5 {
     margin-right: 5rem;
 }
@@ -26,6 +30,11 @@ body {
     display: flex!important;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.d-flex-r {
+    display: flex!important;
+    flex-wrap: wrap;
 }
 
 a.brand-logo {
@@ -62,6 +71,15 @@ nav ul a {
 
 .price-color {
     background: #588aeb;
+    color: #fff;
+    padding-left: 1.3rem;
+    border-radius: 5px;
+}
+
+.card-header-color {
+    display: flex!important;
+    align-items: center;
+    background: #659d19;
     color: #fff;
     padding-left: 1.3rem;
     border-radius: 5px;
