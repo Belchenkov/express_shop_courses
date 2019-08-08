@@ -24,6 +24,7 @@ body {
     display: flex!important;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .d-flex-row {
@@ -109,4 +110,8 @@ nav ul a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.auth {
+    padding-top: 1rem;
 }

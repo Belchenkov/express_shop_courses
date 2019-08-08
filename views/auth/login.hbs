@@ -1,0 +1,110 @@
+<div class="auth">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li
+                    class="tab col s6 light-blue accent-3"
+                >
+                    <a class="active white-text" href="#login">
+                        <i class="material-icons prefix">face</i>
+                        Войти
+                    </a>
+                </li>
+                <li class="tab col s6 light-blue accent-3">
+                    <a class="white-text" href="#register">
+                        <i class="material-icons prefix">person_add</i>
+                        Регистрация
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="login" class="col s8 offset-s6">
+            <form action="/add" method="post">
+                <div class="row">
+                    <h1>Войти в магазин</h1>
+                    <div class="input-field pull-s6 col s12">
+                        <i class="material-icons prefix">mail_outline</i>
+                        <input
+                                id="email"
+                                type="email"
+                                class="validate"
+                                required
+                                name="email"
+                        >
+                        <label for="email">Email</label>
+                        <span class="helper-text" data-error="Введите email"></span>
+                    </div>
+                    <div class="input-field pull-s6 col s12">
+                        <i class="material-icons prefix">enhanced_encryption</i>
+                        <input
+                                id="password"
+                                type="password"
+                                class="validate"
+                                required
+                                name="password"
+                        >
+                        <label for="password">Пароль</label>
+                        <span class="helper-text" data-error="Введите пароль"></span>
+                    </div>
+                    <div class="col s12 mt-1">
+                        <button class="btn light-blue lighten-1 waves-light">
+                            Войти
+                            <i class="material-icons left">transfer_within_a_station
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="register" class="col s8 offset-s6">
+            <form action="/add" method="post">
+                <div class="row">
+                    <h1>Создать аккаунт</h1>
+                    <div class="input-field pull-s6 col s12">
+                        <i class="material-icons prefix">mail_outline</i>
+                        <input
+                                id="remail"
+                                type="email"
+                                class="validate"
+                                required
+                                name="email"
+                        >
+                        <label for="remail">Email</label>
+                        <span class="helper-text" data-error="Введите email"></span>
+                    </div>
+                    <div class="input-field pull-s6 col s12">
+                        <i class="material-icons prefix">enhanced_encryption</i>
+                        <input
+                                id="rpassword"
+                                type="password"
+                                class="validate"
+                                required
+                                name="password"
+                        >
+                        <label for="rpassword">Пароль</label>
+                        <span class="helper-text" data-error="Введите пароль"></span>
+                    </div>
+                    <div class="input-field pull-s6 col s12">
+                        <i class="material-icons prefix">enhanced_encryption</i>
+                        <input
+                                id="confirm"
+                                type="password"
+                                class="validate"
+                                required
+                                name="password"
+                        >
+                        <label for="confirm">Повторить пароль</label>
+                        <span class="helper-text" data-error="Введите пароль"></span>
+                    </div>
+                    <div class="col s12 mt-1">
+                        <button class="btn light-blue lighten-1 waves-light">
+                            Зарегистрироваться
+                            <i class="material-icons left">transfer_within_a_station
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

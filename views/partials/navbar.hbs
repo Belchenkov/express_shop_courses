@@ -56,6 +56,16 @@
                     <i class="material-icons mr-1">monetization_on</i> Заказы
                 </a></li>
             {{/if}}
+
+            {{#if isLogin }}
+                <li class="active"><a href="auth/login#login">
+                    <i class="material-icons mr-1">lock_outline</i> Войти
+                </a></li>
+            {{else}}
+                <li><a href="auth/login#login">
+                    <i class="material-icons mr-1">lock_outline</i> Войти
+                </a></li>
+            {{/if}}
         </ul>
     </div>
 </nav>

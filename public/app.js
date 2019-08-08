@@ -61,5 +61,6 @@ if ($card) {
                .catch(err => console.error(err));
        }
     });
-
 }
+
+M.Tabs.init(document.querySelectorAll('.tabs'));
