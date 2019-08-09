@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 
+const User = require('../models/user');
+
 router.get('/login', async (req, res) => {
     res.render('auth/login', {
         title: 'Авторизация',
@@ -9,9 +11,15 @@ router.get('/login', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    const user = await User.findById('5d43b4f304c64e06a8ff6fc1');
+    req.session.user = user;
     req.session.isAuthenticated = true;
-
-    res.redirect('/');
+    req.session.save(err => {
+        if (err) {
+            throw err;
+        }
+        res.redirect('/');
+    });
 });
 
 router.post('/register', async (req, res) => {
