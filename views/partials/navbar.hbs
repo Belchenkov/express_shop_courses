@@ -27,44 +27,50 @@
                     Курсы
                 </a></li>
             {{/if}}
-            {{#if isAdd }}
-                <li class="active"><a href="/add">
-                    <i class="material-icons mr-1">add</i> Добавить курс
-                </a></li>
-            {{else}}
-                <li><a href="/add">
-                    <i class="material-icons mr-1">add</i> Добавить курс
-                </a></li>
-            {{/if}}
 
-            {{#if isCard }}
-                <li class="active"><a href="/card">
-                    <i class="material-icons mr-1">shopping_cart</i> Корзина
-                </a></li>
-            {{else}}
-                <li><a href="/card">
-                    <i class="material-icons mr-1">shopping_cart</i> Корзина
-                </a></li>
-            {{/if}}
+            {{#if isAuth }}
+                {{#if isAdd }}
+                    <li class="active"><a href="/add">
+                        <i class="material-icons mr-1">add</i> Добавить курс
+                    </a></li>
+                {{else}}
+                    <li><a href="/add">
+                        <i class="material-icons mr-1">add</i> Добавить курс
+                    </a></li>
+                {{/if}}
 
-            {{#if isOrder }}
-                <li class="active"><a href="/orders">
-                    <i class="material-icons mr-1">monetization_on</i> Заказы
-                </a></li>
-            {{else}}
-                <li><a href="/orders">
-                    <i class="material-icons mr-1">monetization_on</i> Заказы
-                </a></li>
-            {{/if}}
+                {{#if isCard }}
+                    <li class="active"><a href="/card">
+                        <i class="material-icons mr-1">shopping_cart</i> Корзина
+                    </a></li>
+                {{else}}
+                    <li><a href="/card">
+                        <i class="material-icons mr-1">shopping_cart</i> Корзина
+                    </a></li>
+                {{/if}}
 
-            {{#if isLogin }}
-                <li class="active"><a href="auth/login#login">
-                    <i class="material-icons mr-1">lock_outline</i> Войти
+                {{#if isOrder }}
+                    <li class="active"><a href="/orders">
+                        <i class="material-icons mr-1">monetization_on</i> Заказы
+                    </a></li>
+                {{else}}
+                    <li><a href="/orders">
+                        <i class="material-icons mr-1">monetization_on</i> Заказы
+                    </a></li>
+                {{/if}}
+                <li><a href="/auth/logout">
+                    <i class="material-icons mr-1">power_settings_new</i> Выйти
                 </a></li>
-            {{else}}
-                <li><a href="auth/login#login">
-                    <i class="material-icons mr-1">lock_outline</i> Войти
-                </a></li>
+            {{ else }}
+                {{#if isLogin }}
+                    <li class="active"><a href="auth/login#login">
+                        <i class="material-icons mr-1">lock_outline</i> Войти
+                    </a></li>
+                {{else}}
+                    <li><a href="auth/login#login">
+                        <i class="material-icons mr-1">lock_outline</i> Войти
+                    </a></li>
+                {{/if}}
             {{/if}}
         </ul>
     </div>
