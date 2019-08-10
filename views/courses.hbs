@@ -20,19 +20,21 @@
                                 <i class="material-icons left">info_outline</i>
                                 Подробнее
                             </a>
-                            <a
-                                href="/courses/{{id}}/edit?allow=true"
-                                class="mt-1 waves-effect waves-light btn-small blue-grey darken-1">
-                                <i class="material-icons left">edit</i>
-                                Редактировать
-                            </a>
-                            <form class="mt-1" action="/card/add" method="post">
-                                <input type="hidden" name="id" value="{{id}}" />
-                                <button type="submit" class="btn light-blue accent-4">
-                                    <i class="material-icons left">add_shopping_cart</i>
-                                    Купить
-                                </button>
-                            </form>
+                            {{#if @root.isAuth}}
+                                <a
+                                    href="/courses/{{id}}/edit?allow=true"
+                                    class="mt-1 waves-effect waves-light btn-small blue-grey darken-1">
+                                    <i class="material-icons left">edit</i>
+                                    Редактировать
+                                </a>
+                                <form class="mt-1" action="/card/add" method="post">
+                                    <input type="hidden" name="id" value="{{id}}" />
+                                    <button type="submit" class="btn light-blue accent-4">
+                                        <i class="material-icons left">add_shopping_cart</i>
+                                        Купить
+                                    </button>
+                                </form>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
+const MongoStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const exphbs  = require('express-handlebars');
 
 // Models
 const User = require('./models/user');
+
+const MONGODB_URI = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
 
 const app = express();
 
@@ -26,6 +29,11 @@ const hbs = exphbs.create({
     extname: 'hbs'
 });
 
+const store = new MongoStore({
+    collection: 'sessions',
+    uri: MONGODB_URI
+});
+
 // Register `hbs.engine` with the Express app.
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -36,7 +44,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(session({
     secret: 'some secret value',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store
 }));
 app.use(varMiddleware);
 
@@ -52,9 +61,7 @@ const PORT = process.env.PORT || 3000;
 
 async function start() {
     try {
-        const mongoURL = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
-
-        await mongoose.connect(mongoURL, {
+        await mongoose.connect(MONGODB_URI, {
             useNewUrlParser: true,
             useFindAndModify: false
         });

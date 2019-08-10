@@ -3,26 +3,24 @@
         <div class="col s12">
             <ul class="tabs">
                 <li
-                    class="tab col s6 light-blue accent-3"
+                    class="tab col s6"
                 >
-                    <a class="active white-text" href="#login">
-                        <i class="material-icons prefix">face</i>
+                    <a href="#login">
                         Войти
                     </a>
                 </li>
-                <li class="tab col s6 light-blue accent-3">
-                    <a class="white-text" href="#register">
-                        <i class="material-icons prefix">person_add</i>
+                <li class="tab col s6">
+                    <a href="#register">
                         Регистрация
                     </a>
                 </li>
             </ul>
         </div>
-        <div id="login" class="col s8 offset-s6">
-            <h1>Войти в магазин</h1>
+        <div id="login" class="col s8 offset-s3">
+            <h1 class="text-center">Войти в магазин</h1>
             <form action="/auth/login" method="post">
                 <div class="row">
-                    <div class="input-field pull-s6 col s12">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">mail_outline</i>
                         <input
                                 id="email"
@@ -34,7 +32,7 @@
                         <label for="email">Email</label>
                         <span class="helper-text" data-error="Введите email"></span>
                     </div>
-                    <div class="input-field pull-s6 col s12">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">enhanced_encryption</i>
                         <input
                                 id="password"
@@ -46,7 +44,7 @@
                         <label for="password">Пароль</label>
                         <span class="helper-text" data-error="Введите пароль"></span>
                     </div>
-                    <div class="col s12 mt-1">
+                    <div class="col offset-s5 s12 mt-1">
                         <button class="btn light-blue lighten-1 waves-light">
                             Войти
                             <i class="material-icons left">transfer_within_a_station
@@ -56,11 +54,11 @@
                 </div>
             </form>
         </div>
-        <div id="register" class="col s8 offset-s6">
+        <div id="register" class="col s8 offset-s3">
             <form action="/auth/register" method="post">
                 <div class="row">
-                    <h1>Создать аккаунт</h1>
-                    <div class="input-field pull-s6 col s12">
+                    <h1 class="text-center">Создать аккаунт</h1>
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">mail_outline</i>
                         <input
                                 id="remail"
@@ -72,7 +70,7 @@
                         <label for="remail">Email</label>
                         <span class="helper-text" data-error="Введите email"></span>
                     </div>
-                    <div class="input-field pull-s6 col s12">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">enhanced_encryption</i>
                         <input
                                 id="rpassword"
@@ -84,7 +82,7 @@
                         <label for="rpassword">Пароль</label>
                         <span class="helper-text" data-error="Введите пароль"></span>
                     </div>
-                    <div class="input-field pull-s6 col s12">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">enhanced_encryption</i>
                         <input
                                 id="confirm"
@@ -96,7 +94,7 @@
                         <label for="confirm">Повторить пароль</label>
                         <span class="helper-text" data-error="Введите пароль"></span>
                     </div>
-                    <div class="col s12 mt-1">
+                    <div class="col s12 offset-s5 mt-1">
                         <button class="btn light-blue lighten-1 waves-light">
                             Зарегистрироваться
                             <i class="material-icons left">transfer_within_a_station
