@@ -28,7 +28,7 @@ body {
     display: flex!important;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    /*align-items: center;*/
 }
 
 .d-flex-row {
