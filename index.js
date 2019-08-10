@@ -5,12 +5,16 @@ const MongoStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const exphbs  = require('express-handlebars');
 
+const app = express();
+
+// Config
+const MONGODB_URI = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
+
 // Models
 const User = require('./models/user');
 
-const MONGODB_URI = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
-
-const app = express();
+// Middleware
+const userMiddleware = require('./middleware/user');
 
 // Routes
 const homeRoutes = require('./routes/home');
@@ -48,6 +52,7 @@ app.use(session({
     store
 }));
 app.use(varMiddleware);
+app.use(userMiddleware);
 
 // Middleware Routes
 app.use('/', homeRoutes);
