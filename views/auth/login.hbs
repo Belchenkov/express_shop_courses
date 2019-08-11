@@ -17,6 +17,9 @@
             </ul>
         </div>
         <div id="login" class="col s8 offset-s3">
+            {{#if loginError}}
+                <p class="alert-danger">{{{loginError}}}</p>
+            {{/if}}
             <h1 class="text-center">Войти в магазин</h1>
             <form action="/auth/login" method="post">
                 <div class="row">
@@ -61,6 +64,9 @@
         <div id="register" class="col s8 offset-s3">
             <form action="/auth/register" method="post">
                 <div class="row">
+                    {{#if registerError}}
+                        <p class="alert-danger">{{{registerError}}}</p>
+                    {{/if}}
                     <h1 class="text-center">Создать аккаунт</h1>
                     <div class="input-field col s12">
                         <i class="material-icons prefix">mail_outline</i>

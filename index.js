@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const csurf = require('csurf');
+const flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
@@ -10,9 +11,6 @@ const app = express();
 
 // Config
 const MONGODB_URI = 'mongodb://belchenkov:12qwasZX@ds013559.mlab.com:13559/express_shop_courses';
-
-// Models
-const User = require('./models/user');
 
 // Middleware
 const userMiddleware = require('./middleware/user');
@@ -53,6 +51,7 @@ app.use(session({
     store
 }));
 app.use(csurf());
+app.use(flash());
 app.use(varMiddleware);
 app.use(userMiddleware);
 
