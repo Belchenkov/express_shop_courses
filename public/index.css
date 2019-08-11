@@ -4,6 +4,10 @@ body {
     font-size: 18px!important;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .mr-1 {
     margin-right: 1rem;
 }
@@ -24,6 +28,7 @@ body {
     display: flex!important;
     flex-direction: column;
     flex-wrap: wrap;
+    /*align-items: center;*/
 }
 
 .d-flex-row {
@@ -109,4 +114,19 @@ nav ul a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.auth {
+    padding-top: 1rem;
+}
+
+.alert-danger {
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    background: rgba(255, 0, 0, .3);
+    color: white;
+    text-shadow: 0 0 2px #000;
 }

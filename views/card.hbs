@@ -16,7 +16,11 @@
                     <td>{{title}}</td>
                     <td>{{count}}</td>
                     <td>
-                        <button class="btn btn-small red js-remove" data-id="{{id}}">
+                        <button
+                            class="btn btn-small red js-remove"
+                            data-id="{{id}}"
+                            data-csrf="{{@root.csrf}}"
+                        >
                             <i class="material-icons left">delete</i>
                             Удалить
                         </button>
@@ -29,6 +33,9 @@
         <p><strong>Всего на сумму:</strong> <span class="price">{{price}}</span></p>
 
         <form action="/orders" method="post">
+            <!-- csrf -->
+            <input type="hidden" name="_csrf" value="{{csrf}}" />
+
             <button type="submit" class="btn green lighten-2">
                 <i class="material-icons left">monetization_on</i>
                 Сделать заказ

@@ -43,7 +43,11 @@
             <span class="helper-text" data-error="Введите URL картинки"></span>
         </div>
         <input type="hidden" name="id" value="{{course.id}}">
-        <div>
+
+        <!-- csrf -->
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+
+        <div class="col ">
             <button
                     type="submit"
                     class="btn light-green lighten-1 waves-light"
@@ -55,13 +59,17 @@
     </div>
 </form>
 
-<div class="input-field pull-s6 col s6">
-    <form action="/courses/remove" method="post">
+<div class="row">
+    <form class="input-field col s6" action="/courses/remove" method="post">
         <input
                 type="hidden"
                 name="id"
                 value="{{ course.id }}"
         >
+
+        <!-- csrf -->
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+
         <button
                 type="submit"
                 class="btn red lighten-1 waves-light"
