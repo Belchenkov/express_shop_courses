@@ -43,6 +43,10 @@
             <span class="helper-text" data-error="Введите URL картинки"></span>
         </div>
         <input type="hidden" name="id" value="{{course.id}}">
+
+        <!-- csrf -->
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+
         <div class="col ">
             <button
                     type="submit"
@@ -62,6 +66,10 @@
                 name="id"
                 value="{{ course.id }}"
         >
+
+        <!-- csrf -->
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+
         <button
                 type="submit"
                 class="btn red lighten-1 waves-light"

@@ -39,6 +39,10 @@
             <label for="img">URL картинки</label>
             <span class="helper-text" data-error="Введите URL картинки"></span>
         </div>
+
+        <!-- csrf -->
+        <input type="hidden" name="_csrf" value="{{csrf}}" />
+
         <div class="pull-s6 col s6 mt-1">
             <button class="btn light-green lighten-1 waves-light">
                 Добавить курс

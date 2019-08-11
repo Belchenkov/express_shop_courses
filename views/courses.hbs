@@ -29,6 +29,10 @@
                                 </a>
                                 <form class="mt-1" action="/card/add" method="post">
                                     <input type="hidden" name="id" value="{{id}}" />
+
+                                    <!-- csrf -->
+                                    <input type="hidden" name="_csrf" value="{{@root.csrf}}" />
+
                                     <button type="submit" class="btn light-blue accent-4">
                                         <i class="material-icons left">add_shopping_cart</i>
                                         Купить

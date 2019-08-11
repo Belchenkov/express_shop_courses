@@ -44,6 +44,10 @@
                         <label for="password">Пароль</label>
                         <span class="helper-text" data-error="Введите пароль"></span>
                     </div>
+
+                    <!-- csrf -->
+                    <input type="hidden" name="_csrf" value="{{csrf}}" />
+
                     <div class="col offset-s5 s12 mt-1">
                         <button class="btn light-blue lighten-1 waves-light">
                             Войти
@@ -106,6 +110,10 @@
                         <label for="confirm">Повторить пароль</label>
                         <span class="helper-text" data-error="Введите пароль"></span>
                     </div>
+
+                    <!-- csrf -->
+                    <input type="hidden" name="_csrf" value="{{csrf}}" />
+
                     <div class="col s12 offset-s5 mt-1">
                         <button class="btn light-blue lighten-1 waves-light">
                             Зарегистрироваться
