@@ -95,6 +95,32 @@ router.get('/reset', (req, res) => {
    });
 });
 
+router.get('/password/:token', async (req, res) => {
+   if (!req.params.token) {
+       return res.redirect('/auth/login');
+   }
+
+   try {
+       const user = await User.findOne({
+           resetToken: req.params.token,
+           resetTokenExp: {$gt: Date.now()}
+       });
+
+       if (!user) {
+           return res.redirect('/auth/login');
+       } else {
+           res.render('/auth/reset', {
+               title: 'Восстановить доступ',
+               error: req.flash('error'),
+               userId: user._id.toString(),
+               token: req.params.token
+           });
+       }
+   } catch (err) {
+       console.log(err);
+   }
+});
+
 router.post('/reset', (req, res) => {
     try {
         crypto.randomBytes(32, async (err, buffer) => {
