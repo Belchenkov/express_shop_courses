@@ -109,7 +109,7 @@ router.get('/password/:token', async (req, res) => {
        if (!user) {
            return res.redirect('/auth/login');
        } else {
-           res.render('/auth/reset', {
+           res.render('auth/password', {
                title: 'Восстановить доступ',
                error: req.flash('error'),
                userId: user._id.toString(),
@@ -119,6 +119,31 @@ router.get('/password/:token', async (req, res) => {
    } catch (err) {
        console.log(err);
    }
+});
+
+router.post('/password', async (req, res) => {
+    try {
+        const user = await User.findOne({
+            _id: req.body.userId,
+            resetToken: req.body.token,
+            resetTokenExp: {$gt: Date.now()}
+        });
+
+        if (user) {
+            user.password = await bcrypt.hash(req.body.password, 10);
+            user.resetToken = undefined;
+            user.resetTokenExp = undefined;
+            await user.save();
+
+            res.redirect('/auth/login');
+        } else {
+            req.flash('loginError', 'Время жизни токена истекло');
+            res.redirect('/auth/login');
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.post('/reset', (req, res) => {
