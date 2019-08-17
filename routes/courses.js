@@ -26,15 +26,19 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const course = await Course.findById(req.params.id)
-        .populate('userId', 'email name')
-        .select('price title img');
+    try {
+        const course = await Course.findById(req.params.id)
+            .populate('userId', 'email name')
+            .select('price title img');
 
-    res.render('course', {
-        layout: 'empty',
-        title: `Курс`,
-        course
-    });
+        res.render('course', {
+            layout: 'empty',
+            title: `Курс`,
+            course
+        });
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get('/:id/edit', auth, async (req, res) => {
@@ -81,13 +85,15 @@ router.post('/edit', auth, async (req, res) => {
 
 router.post('/remove', auth, async (req, res) => {
     try {
-        await Course.deleteOne({ _id: req.body.id });
+        await Course.deleteOne({
+            _id: req.body.id,
+            userId: req.user._id
+        });
 
         res.redirect('/courses');
     } catch (e) {
         console.log(e);
     }
-
 });
 
 module.exports = router;
