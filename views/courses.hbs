@@ -20,7 +20,8 @@
                                 <i class="material-icons left">info_outline</i>
                                 Подробнее
                             </a>
-                            {{#if @root.isAuth}}
+
+                            {{#ifeq userId._id @root.userId}}
                                 <a
                                     href="/courses/{{id}}/edit?allow=true"
                                     class="mt-1 waves-effect waves-light btn-small blue-grey darken-1">
@@ -38,7 +39,7 @@
                                         Купить
                                     </button>
                                 </form>
-                            {{/if}}
+                            {{/ifeq}}
                         </div>
                     </div>
                 </div>
