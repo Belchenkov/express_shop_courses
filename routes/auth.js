@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sendgrid = require('nodemailer-sendgrid-transport');
 const crypto = require('crypto');
+const { body, validationResult } = require('express-validator');
 
 const keys = require('../keys');
 const User = require('../models/user');
@@ -60,10 +61,22 @@ router.get('/logout', async (req, res) => {
     });
 });
 
-router.post('/register', async (req, res) => {
+router.post(
+    '/register',
+    body('email').isEmail(),
+    async (req, res) => {
     try {
-        const { email, password, repeat, name } = req.body;
+        const { email, password, confirm, name } = req.body;
         const candidate = await User.findOne({ email });
+        const errors = validationResult(req);
+
+        // Validation
+        if (!errors.isEmpty()) {
+            const { msg } = errors.array()[0];
+            req.flash('registerError', msg);
+
+            return res.status(422).redirect('/auth/login#register');
+        }
 
         if (candidate) {
             req.flash('registerError', 'Email уже занят!');
