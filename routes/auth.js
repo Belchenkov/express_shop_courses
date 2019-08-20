@@ -4,12 +4,13 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sendgrid = require('nodemailer-sendgrid-transport');
 const crypto = require('crypto');
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const keys = require('../keys');
 const User = require('../models/user');
 const reqEmail = require('../emails/registration');
 const resetEmail = require('../emails/reset');
+const { registerValidators } = require('../utils/validators');
 
 const transporter = nodemailer.createTransport(sendgrid({
     auth: { api_key: keys.SENDGRID_API_KEY }
@@ -63,7 +64,7 @@ router.get('/logout', async (req, res) => {
 
 router.post(
     '/register',
-    body('email').isEmail(),
+    registerValidators,
     async (req, res) => {
     try {
         const { email, password, confirm, name } = req.body;
@@ -93,7 +94,6 @@ router.post(
             await user.save();
 
             await transporter.sendMail(reqEmail(email));
-
             res.redirect('/auth/login#login');
         }
     } catch (err) {
