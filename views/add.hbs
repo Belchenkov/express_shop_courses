@@ -1,5 +1,9 @@
 <h1>Добавить курс</h1>
 
+{{#if error}}
+    <p class="alert">{{error}}</p>
+{{/if}}
+
 <form action="/add" method="post">
     <div class="row d-flex">
         <div class="input-field pull-s6 col s6">
@@ -10,6 +14,7 @@
                 class="validate"
                 required
                 name="title"
+                value="{{data.title}}"
             >
             <label for="title">Название курса</label>
             <span class="helper-text" data-error="Введите название"></span>
@@ -23,6 +28,7 @@
                 required
                 min="1"
                 name="price"
+                value="{{data.price}}"
             >
             <label for="price">Цена</label>
             <span class="helper-text" data-error="Введите цену"></span>
@@ -35,6 +41,7 @@
                 class="validate"
                 required
                 name="img"
+                value="{{data.img}}"
             >
             <label for="img">URL картинки</label>
             <span class="helper-text" data-error="Введите URL картинки"></span>
