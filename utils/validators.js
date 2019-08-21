@@ -2,7 +2,10 @@ const { body } = require('express-validator');
 const User = require('../models/user');
 
 exports.registerValidators = [
-    body('email').isEmail().withMessage('Введите корректный email').custom(async (value, {req}) => {
+    body('email')
+        .isEmail()
+        .withMessage('Введите корректный email')
+        .custom(async (value, {req}) => {
         try {
             const user = await User.findOne({email: value});
 
@@ -12,14 +15,24 @@ exports.registerValidators = [
         } catch (err) {
             console.log(err);
         }
-    }),
-    body('password').isLength({min: 6, max: 56}).isAlphanumeric().withMessage('Пароль должен быть минимум 6 символов'),
-    body('confirm').custom((value, {req}) => {
-        if (value !== req.body.password) {
-            throw new Error('Пароли должны совпадать');
-        }
+    })
+        .normalizeEmail(),
+    body('password')
+        .isLength({min: 6, max: 56})
+        .isAlphanumeric()
+        .withMessage('Пароль должен быть минимум 6 символов')
+        .trim(),
+    body('confirm')
+        .custom((value, {req}) => {
+            if (value !== req.body.password) {
+                throw new Error('Пароли должны совпадать');
+            }
 
-        return true;
-    }),
-    body('name').isLength({min: 3}).withMessage('Имя должно быть минимум 3 символа')
+            return true;
+        })
+        .trim(),
+    body('name')
+        .isLength({min: 3})
+        .withMessage('Имя должно быть минимум 3 символа')
+        .trim()
 ];
