@@ -15,6 +15,8 @@ const app = express();
 // Middleware
 const userMiddleware = require('./middleware/user');
 const errorHandler = require('./middleware/error');
+const fileMiddleware = require('./middleware/file');
+const varMiddleware = require('./middleware/variables');
 
 // Routes
 const homeRoutes = require('./routes/home');
@@ -24,9 +26,6 @@ const cardRoutes = require('./routes/card');
 const ordersRoutes = require('./routes/orders');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
-
-// Middleware
-const varMiddleware = require('./middleware/variables');
 
 // Handlebars
 const hbs = exphbs.create({
@@ -53,6 +52,7 @@ app.use(session({
     saveUninitialized: false,
     store
 }));
+app.use(fileMiddleware.single('avatar'));
 app.use(csurf());
 app.use(flash());
 app.use(varMiddleware);
