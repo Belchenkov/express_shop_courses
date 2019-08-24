@@ -4,11 +4,13 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sendgrid = require('nodemailer-sendgrid-transport');
 const crypto = require('crypto');
+const { validationResult } = require('express-validator');
 
 const keys = require('../keys');
 const User = require('../models/user');
 const reqEmail = require('../emails/registration');
 const resetEmail = require('../emails/reset');
+const { registerValidators } = require('../utils/validators');
 
 const transporter = nodemailer.createTransport(sendgrid({
     auth: { api_key: keys.SENDGRID_API_KEY }
@@ -60,29 +62,32 @@ router.get('/logout', async (req, res) => {
     });
 });
 
-router.post('/register', async (req, res) => {
+router.post(
+    '/register',
+    registerValidators,
+    async (req, res) => {
     try {
-        const { email, password, repeat, name } = req.body;
-        const candidate = await User.findOne({ email });
+        const { email, password, name } = req.body;
+        const errors = validationResult(req);
+        console.log(errors);
+        // Validation
+        if (!errors.isEmpty()) {
+            req.flash('registerError', errors.array()[0].msg);
 
-        if (candidate) {
-            req.flash('registerError', 'Email уже занят!');
-            res.redirect('/auth/login#register');
-        } else {
-            const hashPassword = await bcrypt.hash(password, 10);
-
-            const user = new User({
-                email,
-                name,
-                password: hashPassword,
-                cart: { items: [] }
-            });
-            await user.save();
-
-            await transporter.sendMail(reqEmail(email));
-
-            res.redirect('/auth/login#login');
+            return res.status(422).redirect('/auth/login#register');
         }
+
+        const hashPassword = await bcrypt.hash(password, 10);
+        const user = new User({
+            email,
+            name,
+            password: hashPassword,
+            cart: { items: [] }
+        });
+        await user.save();
+
+        await transporter.sendMail(reqEmail(email));
+        res.redirect('/auth/login#login');
     } catch (err) {
         console.log(err);
     }

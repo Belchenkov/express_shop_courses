@@ -39,6 +39,16 @@
                     </a></li>
                 {{/if}}
 
+                {{#if isProfile }}
+                    <li class="active"><a href="/profile">
+                        <i class="material-icons mr-1">account_box</i> Профиль
+                    </a></li>
+                {{else}}
+                    <li><a href="/profile">
+                        <i class="material-icons mr-1">account_box</i> Профиль
+                    </a></li>
+                {{/if}}
+
                 {{#if isCard }}
                     <li class="active"><a href="/card">
                         <i class="material-icons mr-1">shopping_cart</i> Корзина

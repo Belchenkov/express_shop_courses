@@ -14,6 +14,9 @@ const app = express();
 
 // Middleware
 const userMiddleware = require('./middleware/user');
+const errorHandler = require('./middleware/error');
+const fileMiddleware = require('./middleware/file');
+const varMiddleware = require('./middleware/variables');
 
 // Routes
 const homeRoutes = require('./routes/home');
@@ -22,9 +25,7 @@ const coursesRoutes = require('./routes/courses');
 const cardRoutes = require('./routes/card');
 const ordersRoutes = require('./routes/orders');
 const authRoutes = require('./routes/auth');
-
-// Middleware
-const varMiddleware = require('./middleware/variables');
+const profileRoutes = require('./routes/profile');
 
 // Handlebars
 const hbs = exphbs.create({
@@ -44,6 +45,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({extended: true}));
 app.use(session({
     secret: keys.SESSION_SECRET,
@@ -51,6 +53,7 @@ app.use(session({
     saveUninitialized: false,
     store
 }));
+app.use(fileMiddleware.single('avatar'));
 app.use(csurf());
 app.use(flash());
 app.use(varMiddleware);
@@ -63,6 +66,9 @@ app.use('/courses', coursesRoutes);
 app.use('/card', cardRoutes);
 app.use('/orders', ordersRoutes);
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
